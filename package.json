@@ -1,5 +1,5 @@
 {
-	"name": "RunOnSave",
+	"name": "rscdev",
 	"displayName": "Run on Save",
 	"description": "Run commands when a file is saved in vscode.",
 	"icon": "images/save-icon.png",
@@ -34,45 +34,7 @@
 		"configuration": {
 			"title": "Run On Save command configuration.",
 			"type": "object",
-			"properties": {
-				"rscdev.runonsave": {
-					"type": "object",
-					"properties": {
-						"shell": {
-							"type": "string",
-							"description": "Shell to execute the command with (gets passed to child_process.exec as an options arg. e.g. child_process(cmd, { shell })."
-						},
-						"commands": {
-							"type": "array",
-							"items": {
-								"type": "object",
-								"properties": {
-									"match": {
-										"type": "string",
-										"description": "Regex for matching files to run commands on \n\nNOTE: This is a regex and not a file path spce, so backslashes have to be escaped. They also have to be escaped in json strings, so you may have to double escape them in certain cases such as targetting contents of folders.\n\ne.g.\n\"match\": \"some\\\\\\\\directory\\\\\\\\.*\"",
-										"default": ".*"
-									},
-									"notMatch": {
-										"type": "string",
-										"description": "Regex for matching files *not* to run commands on.",
-										"default": ".*"
-									},
-									"cmd": {
-										"type": "string",
-										"description": "Command to execute on save.",
-										"default": "echo ${file}"
-									},
-									"isAsync": {
-										"type": "boolean",
-										"description": "Run command asynchronously.",
-										"default": false
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+			"properties": {}
 		}
 	},
 	"scripts": {

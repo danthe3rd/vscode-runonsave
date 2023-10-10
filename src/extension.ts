@@ -13,11 +13,11 @@ export function activate(context: vscode.ExtensionContext): void {
 		disposeStatus.dispose();
 	});
 
-	vscode.commands.registerCommand('extension.emeraldwalk.enableRunOnSave', () => {
+	vscode.commands.registerCommand('extension.rscdev.enableRunOnSave', () => {
 		extension.isEnabled = true;
 	});
 
-	vscode.commands.registerCommand('extension.emeraldwalk.disableRunOnSave', () => {
+	vscode.commands.registerCommand('extension.rscdev.disableRunOnSave', () => {
 		extension.isEnabled = false;
 	});
 
@@ -35,7 +35,6 @@ interface ICommand {
 
 interface IConfig {
 	shell: string;
-	autoClearConsole: boolean;
 	commands: Array<ICommand>;
 }
 
@@ -118,16 +117,12 @@ class RunOnSaveExtension {
 		return this._config.shell;
 	}
 
-	public get autoClearConsole(): boolean {
-		return !!this._config.autoClearConsole;
-	}
-
 	public get commands(): Array<ICommand> {
 		return this._config.commands || [];
 	}
 
 	public loadConfig(): void {
-		this._config = <IConfig><any>vscode.workspace.getConfiguration('emeraldwalk.runonsave');
+		this._config = <IConfig><any>vscode.workspace.getConfiguration('rscdev.runonsave');
 	}
 
 	/**
@@ -148,10 +143,6 @@ class RunOnSaveExtension {
 	}
 
 	public runCommands(document: vscode.TextDocument): void {
-		if(this.autoClearConsole) {
-			this._outputChannel.clear();
-		}
-
 		if(!this.isEnabled || this.commands.length === 0) {
 			this.showOutputMessage();
 			return;

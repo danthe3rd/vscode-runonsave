@@ -7,6 +7,7 @@
 		"color": "#5c2d91",
 		"theme": "light"
 	},
+	"repository": "https://github.com/danthe3rd/vscode-runonsave",
 	"version": "0.1.0",
 	"publisher": "rscdev",
 	"license": "Apache-2.0",
